@@ -4,8 +4,10 @@
  */
 package com.learnup.entities;
 
+import java.time.Instant;
 import java.util.List;
 import org.bson.codecs.pojo.annotations.BsonId;
+import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 
 /**
@@ -21,17 +23,24 @@ public class Student {
     private List<EnrolledCourse> enrolledCourses;
     private List<String> interests;
     private Setting settings;
+    @BsonProperty("created_in")
+    private Instant createdIn;
+    
+    @BsonProperty("updated_in")
+    private Instant updatedIn;
 
     public Student() {
     }
 
-    public Student(ObjectId id, String name, String email, List<EnrolledCourse> enrolledCourses, List<String> interests, Setting settings) {
+    public Student(ObjectId id, String name, String email, List<EnrolledCourse> enrolledCourses, List<String> interests, Setting settings, Instant createdIn, Instant updatedIn) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.enrolledCourses = enrolledCourses;
         this.interests = interests;
         this.settings = settings;
+        this.createdIn = createdIn;
+        this.updatedIn = updatedIn;
     }
 
     public ObjectId getId() {
@@ -80,6 +89,22 @@ public class Student {
 
     public void setSettings(Setting settings) {
         this.settings = settings;
+    }
+
+    public Instant getCreatedIn() {
+        return createdIn;
+    }
+
+    public void setCreatedIn(Instant createdIn) {
+        this.createdIn = createdIn;
+    }
+
+    public Instant getUpdatedIn() {
+        return updatedIn;
+    }
+
+    public void setUpdatedIn(Instant updatedIn) {
+        this.updatedIn = updatedIn;
     }
     
 }
